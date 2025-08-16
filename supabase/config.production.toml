@@ -1,0 +1,105 @@
+# Supabase 프로덕션 환경 설정
+
+project_id = "your-production-project-id"
+
+[api]
+enabled = true
+port = 54321
+schemas = ["public", "graphql_public"]
+extra_search_path = ["public", "extensions"]
+max_rows = 1000
+
+[auth]
+enabled = true
+# 프로덕션에서는 더 엄격한 설정
+site_url = "https://your-domain.github.io"
+additional_redirect_urls = ["https://your-domain.github.io/**"]
+jwt_expiry = 3600
+refresh_token_rotation_enabled = true
+security_update_password_require_reauthentication = true
+security_captcha_enabled = true
+
+[auth.email]
+enable_signup = true
+double_confirm_changes = true
+enable_confirmations = true
+secure_email_change_enabled = true
+enable_reauthentication = true
+
+[auth.sms]
+enable_signup = false
+
+[auth.external.google]
+enabled = false
+
+[auth.external.github]
+enabled = false
+
+[db]
+port = 54322
+shadow_port = 54320
+major_version = 15
+
+[db.pooler]
+enabled = true
+port = 54329
+pool_mode = "transaction"
+default_pool_size = 20
+max_client_conn = 100
+
+[realtime]
+enabled = true
+ip_version = "ipv4"
+max_header_length = 4096
+
+[storage]
+enabled = true
+file_size_limit = "10MB"
+image_transformation = { enabled = true }
+
+[edge_functions]
+enabled = true
+inspector_port = 8083
+
+[analytics]
+enabled = true
+port = 54327
+vector_port = 54328
+# 프로덕션에서는 더 많은 데이터 보존
+backend = "postgres"
+
+[inbound_email]
+enabled = false
+
+[studio]
+enabled = false  # 프로덕션에서는 비활성화
+
+# 프로덕션 전용 설정
+[experimental]
+# 성능 최적화
+orioledb_version = ""
+s3_host = ""
+s3_region = ""
+s3_access_key = ""
+s3_secret_key = ""
+
+# 보안 설정
+[security]
+# CORS 설정
+cors_origins = ["https://your-domain.github.io"]
+# Rate limiting
+rate_limit_enabled = true
+rate_limit_per_hour = 1000
+
+# 백업 설정
+[backup]
+enabled = true
+schedule = "0 2 * * *"  # 매일 오전 2시
+retention_days = 30
+
+# 모니터링 설정
+[monitoring]
+enabled = true
+log_level = "info"
+metrics_enabled = true
+health_check_enabled = true
