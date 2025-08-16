@@ -249,17 +249,4 @@ export default function AdminDashboard() {
       </div>
     </Layout>
   );
-}      {/* 
-실시간 모니터링 */}
-      <div className="mb-8">
-        <RealTimeMonitor />
-      </div>
-
-      {/* 알림 시스템 */}
-      <NotificationSystem 
-        notifications={notifications} 
-        onClose={removeNotification} 
-      />
-    </Layout>
-  );
 }
