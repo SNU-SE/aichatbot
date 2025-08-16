@@ -150,11 +150,14 @@ function AppRoutes() {
 }
 
 function App() {
+  // GitHub Pages의 경우 basename 설정
+  const basename = import.meta.env.PROD ? '/aichatbot' : '';
+  
   return (
     <ErrorBoundary>
       <QueryClientProvider client={queryClient}>
         <AuthProvider>
-          <Router>
+          <Router basename={basename}>
             <AppRoutes />
           </Router>
         </AuthProvider>

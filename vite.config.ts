@@ -11,7 +11,7 @@ export default defineConfig(({ mode }) => {
     plugins: [react()],
     
     // GitHub Pages 배포를 위한 base path 설정
-    base: isGitHubPages ? '/aichatbot/' : '/',
+    base: isGitHubPages ? '/aichatbot/' : './',
     
     // 개발 서버 설정
     server: {
