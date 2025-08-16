@@ -91,7 +91,7 @@ export default function StorageMonitor({ className }: StorageMonitorProps) {
             
             studentName = student?.name || '알 수 없음';
             studentCache.set(studentId, studentName);
-          } catch (error) {
+          } catch {
             studentName = '알 수 없음';
             studentCache.set(studentId, studentName);
           }

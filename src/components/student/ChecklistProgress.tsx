@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import Card, { CardHeader, CardTitle, CardContent } from '../ui/Card';
-import Button from '../ui/Button';
+// import Button from '../ui/Button'; // 사용하지 않는 import 주석 처리
 import Badge from '../ui/Badge';
 import { useChecklistItems } from '../../hooks/useActivities';
 import { useCurrentStudent } from '../../hooks/useStudents';
