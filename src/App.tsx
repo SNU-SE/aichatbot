@@ -3,7 +3,6 @@ import { QueryClientProvider } from '@tanstack/react-query';
 import { AuthProvider, useAuth } from './hooks/useAuth';
 import { queryClient } from './lib/react-query';
 import ProtectedRoute from './components/auth/ProtectedRoute';
-import ErrorBoundary from './components/ui/ErrorBoundary';
 import LoginPage from './pages/LoginPage';
 import AdminDashboard from './pages/AdminDashboard';
 import StudentDashboard from './pages/StudentDashboard';
@@ -16,6 +15,7 @@ import ActivitiesManagePage from './pages/admin/ActivitiesManagePage';
 import ChatMonitoringPage from './pages/admin/ChatMonitoringPage';
 import FileManagePage from './pages/admin/FileManagePage';
 import AISettingsPage from './pages/admin/AISettingsPage';
+import ErrorBoundary from './components/ui/ErrorBoundary';
 
 function AppRoutes() {
   const { user, loading } = useAuth();
@@ -148,8 +148,6 @@ function AppRoutes() {
     </Routes>
   );
 }
-
-import ErrorBoundary from './components/ui/ErrorBoundary';
 
 function App() {
   return (

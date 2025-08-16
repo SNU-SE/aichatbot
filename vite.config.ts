@@ -11,7 +11,7 @@ export default defineConfig(({ mode }) => {
     plugins: [react()],
     
     // GitHub Pages 배포를 위한 base path 설정
-    base: isGitHubPages ? '/ai-education-platform/' : '/',
+    base: isGitHubPages ? '/aichatbot/' : '/',
     
     // 개발 서버 설정
     server: {
@@ -101,16 +101,6 @@ export default defineConfig(({ mode }) => {
     // CSS 설정
     css: {
       devSourcemap: !isProduction,
-      postcss: {
-        plugins: [
-          // eslint-disable-next-line @typescript-eslint/no-require-imports
-          require('tailwindcss'),
-          // eslint-disable-next-line @typescript-eslint/no-require-imports
-          require('autoprefixer'),
-          // eslint-disable-next-line @typescript-eslint/no-require-imports
-          ...(isProduction ? [require('cssnano')] : []),
-        ],
-      },
     },
     
     // 최적화 설정

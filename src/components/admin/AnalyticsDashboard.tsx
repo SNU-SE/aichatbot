@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useMemo } from 'react';
 import Card, { CardHeader, CardTitle, CardContent } from '../ui/Card';
 import Button from '../ui/Button';
 import { supabase } from '../../lib/supabase';
@@ -139,7 +139,7 @@ export default function AnalyticsDashboard() {
           {timeRanges.map((range) => (
             <Button
               key={range.value}
-              variant={selectedTimeRange.value === range.value ? 'default' : 'outline'}
+              variant={selectedTimeRange.value === range.value ? 'primary' : 'outline'}
               size="sm"
               onClick={() => setSelectedTimeRange(range)}
             >
