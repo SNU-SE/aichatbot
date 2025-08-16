@@ -103,8 +103,11 @@ export default defineConfig(({ command, mode }) => {
       devSourcemap: !isProduction,
       postcss: {
         plugins: [
+          // eslint-disable-next-line @typescript-eslint/no-require-imports
           require('tailwindcss'),
+          // eslint-disable-next-line @typescript-eslint/no-require-imports
           require('autoprefixer'),
+          // eslint-disable-next-line @typescript-eslint/no-require-imports
           ...(isProduction ? [require('cssnano')] : []),
         ],
       },

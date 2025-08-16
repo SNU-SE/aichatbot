@@ -118,7 +118,7 @@ vi.mock('react-router-dom', () => ({
   useParams: vi.fn(),
   useLocation: vi.fn(),
   Link: ({ children, to }: { children: React.ReactNode; to: string }) => 
-    <a href={to}>{children}</a>,
+    React.createElement('a', { href: to }, children),
   BrowserRouter: ({ children }: { children: React.ReactNode }) => children,
   Routes: ({ children }: { children: React.ReactNode }) => children,
   Route: ({ element }: { element: React.ReactNode }) => element,
