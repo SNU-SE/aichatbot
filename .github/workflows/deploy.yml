@@ -151,10 +151,6 @@ jobs:
     needs: [build-and-test]
     if: github.ref == 'refs/heads/main'
     
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
@@ -176,17 +172,12 @@ jobs:
         VITE_APP_ENV: production
         GITHUB_PAGES: true
 
-    - name: Setup Pages
-      uses: actions/configure-pages@v4
-
-    - name: Upload to GitHub Pages
-      uses: actions/upload-pages-artifact@v3
-      with:
-        path: dist/
-
     - name: Deploy to GitHub Pages
-      id: deployment
-      uses: actions/deploy-pages@v4
+      uses: peaceiris/actions-gh-pages@v3
+      if: github.ref == 'refs/heads/main'
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./dist
 
   # 배포 후 검증 작업 (임시 비활성화)
   # post-deploy-verification:
@@ -233,7 +224,7 @@ jobs:
       if: needs.deploy-pages.result == 'success'
       run: |
         echo "✅ Deployment successful!"
-        echo "🌐 Site URL: ${{ needs.deploy-pages.outputs.page_url }}"
+        echo "🌐 Site URL: https://snu-se.github.io/aichatbot/"
 
     - name: Notify deployment failure
       if: needs.deploy-pages.result == 'failure'
